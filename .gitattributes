@@ -1,0 +1,6 @@
+# FIX CRLF always when developer has not set
+# Linux/Mac: git config --global core.autocrlf input
+# Windows: git config --global core.autocrlf true
+# Auto detect text files and perform LF normalization
+* text=auto
+* eol=lf
