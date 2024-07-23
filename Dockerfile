@@ -234,7 +234,7 @@ COPY ./CasaOS/build/sysroot/etc/casaos/casaos.conf.sample /etc/casaos/casaos.con
 ############################################################################################################
 # Build the final image
 ############################################################################################################
-FROM ubuntu:latest
+FROM ubuntu:24.04
 
 # Install required packages
 RUN apt-get update && apt-get install -y wget curl smartmontools parted ntfs-3g net-tools udevil samba cifs-utils mergerfs unzip
