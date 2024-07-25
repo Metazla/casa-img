@@ -237,7 +237,7 @@ COPY ./CasaOS/build/sysroot/etc/casaos/casaos.conf.sample /etc/casaos/casaos.con
 FROM ubuntu:24.04
 
 # Install required packages
-RUN apt-get update && apt-get install -y wget curl smartmontools parted ntfs-3g net-tools udevil samba cifs-utils mergerfs unzip
+RUN apt-get update && apt-get install -y wget curl smartmontools parted ntfs-3g net-tools udevil samba cifs-utils mergerfs unzip openssh-server
 
 # install docker https://docs.docker.com/engine/install/ubuntu/
 RUN curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh
@@ -278,6 +278,11 @@ COPY --from=builder-casaos-local-storage /app/casaos-local-storage .
 #COPY --from=builder-casaos-local-storage /etc/casaos/local-storage.conf /etc/casaos/local-storage.conf
 COPY ./conf/local-storage/local-storage.conf /etc/casaos/local-storage.conf
 
+#COPY ui /var/lib/casaos/www and other initial files
+COPY --from=builder-casaos-ui /app/build/sysroot/var/lib/casaos/ /var/lib/casaos/
+COPY ./CasaOS-UI/main/register-ui-events.sh ./register-ui-events.sh
+RUN chmod +x ./register-ui-events.sh
+
 # Copy CasaOS-AppStore
 #COPY ./appstore-data/main/build/sysroot/var/lib/casaos/appstore/default.new /var/lib/casaos/appstore/default
 COPY ./CasaOS-AppStore/Apps /var/lib/casaos/appstore/default/Apps
@@ -288,9 +293,6 @@ COPY --from=builder-casaos-main /app/casaos-main .
 #COPY --from=builder-casaos-main /etc/casaos/casaos.conf /etc/casaos/casaos.conf
 COPY ./conf/casaos/casaos.conf /etc/casaos/casaos.conf
 
-#COPY ui /var/lib/casaos/www
-COPY --from=builder-casaos-ui /app/build/sysroot/var/lib/casaos/www/ /var/lib/casaos/www
-
 COPY ./entrypoint.sh ./entrypoint.sh
 RUN chmod +x ./entrypoint.sh
 
@@ -300,4 +302,4 @@ EXPOSE 8080
 # Command to run the executable
 ENTRYPOINT ["/root/entrypoint.sh"]
 
-#Note persistent volum to be mounted on /root/DATA
+#Note persistent volume to be mounted on /root/DATA

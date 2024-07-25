@@ -32,7 +32,20 @@ try {
 
     # Run the Docker container
     Write-Host "Running the Docker container..."
-    docker run -d -p 8080:8080 -v C:\DATA:/DATA -v /var/run/docker.sock:/var/run/docker.sock --name $containerName $imageName
+    # DATA_ROOT must be in linux style path so we need to convert C:\DATA to c/DATA
+    # you need to create a network for it to work docker network create meta
+    docker run -d `
+    -p 8080:8080 `
+    --expose 8080 `
+    --network meta `
+    --hostname casaos `
+    -e REF_NET=meta `
+    -e REF_PORT=80 `
+    -e REF_DOMAIN=nas.localhost `
+    -e DATA_ROOT=/c/DATA `
+    -v C:\DATA:/DATA `
+    -v /var/run/docker.sock:/var/run/docker.sock `
+    --name $containerName $imageName
     #C:\Users\<YourUsername>\AppData\Local\Docker\wsl\data
     if ($LASTEXITCODE -ne 0) {
         throw "Docker run failed. Exiting."

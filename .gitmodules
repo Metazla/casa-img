@@ -5,7 +5,7 @@
 [submodule "CasaOS-AppManagement"]
 	path = CasaOS-AppManagement
 	url = git@github.com:Metazla/CasaOS-AppManagement.git
-	branch = main
+	branch = next
 [submodule "CasaOS-AppStore"]
 	path = CasaOS-AppStore
 	url = git@github.com:Metazla/CasaOS-AppStore.git
@@ -25,7 +25,7 @@
 [submodule "CasaOS-UI"]
 	path = CasaOS-UI
 	url = git@github.com:Metazla/CasaOS-UI.git
-	branch = main
+	branch = next
 [submodule "CasaOS-UserService"]
 	path = CasaOS-UserService
 	url = git@github.com:Metazla/CasaOS-UserService.git

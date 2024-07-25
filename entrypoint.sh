@@ -1,5 +1,8 @@
 #!/bin/sh
 
+mkdir -p /DATA/AppData/casaos
+
+
 mkdir -p /var/log
 touch /var/log/casaos-gateway.log
 touch /var/log/casaos-app-management.log
@@ -53,6 +56,8 @@ done
 
 # Start the UserService service and redirect stdout and stderr to the log files
 ./casaos-user-service > /var/log/casaos-user-service.log 2>&1 &
+
+./register-ui-events.sh
 
 # Tail the log files to keep the container running and to display the logs in stdout
 tail -f \
