@@ -35,7 +35,7 @@ try {
     # DATA_ROOT must be in linux style path so we need to convert C:\DATA to c/DATA
     # you need to create a network for it to work docker network create meta
     docker run -d `
-    -p 8080:8080 `
+    -p 12380:8080 `
     --expose 8080 `
     --network meta `
     --hostname casaos `
