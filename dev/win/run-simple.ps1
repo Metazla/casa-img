@@ -1,7 +1,7 @@
 # Define variables
 $imageName = "casa-os"
 $containerName = "casa-os-dev"
-$dockerfilePath = "."
+$dockerfilePath = "../.."
 $originalPath = Get-Location
 
 # Change to the Dockerfile directory
@@ -35,13 +35,7 @@ try {
     # DATA_ROOT must be in linux style path so we need to convert C:\DATA to c/DATA
     # you need to create a network for it to work docker network create meta
     docker run -d `
-    -p 12380:8080 `
-    --expose 8080 `
-    --network meta `
-    --hostname casaos `
-    -e REF_NET=meta `
-    -e REF_PORT=80 `
-    -e REF_DOMAIN=nas.localhost `
+    -p 8080:8080 `
     -e DATA_ROOT=/c/DATA `
     -v C:\DATA:/DATA `
     -v /var/run/docker.sock:/var/run/docker.sock `

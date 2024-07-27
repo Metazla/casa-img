@@ -1,6 +1,6 @@
 # Define variables
 $imageName = "casa-os"
-$dockerfilePath = "."
+$dockerfilePath = "../.."
 $originalPath = Get-Location
 
 # Change to the Dockerfile directory
