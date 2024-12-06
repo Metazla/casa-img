@@ -1,3 +1,14 @@
+## ⚠️ Repository Archived
+
+This project is being archived because I no longer have time to maintain it. It is a fork of the original project [worph/casa-img](https://github.com/worph/casa-img), which is more up-to-date and has Docker images published (unfortunately, I forgot to use the fork button, so it's not marked as a fork).
+
+### Other notable repositories working on this:
+- [dockur/casa](https://github.com/dockur/casa) (with docker image published)
+- [Mazuna/casa-img-revived](https://github.com/Mazuna/casa-img-revived)
+
+Thanks to everyone who contributed to this project!
+
+
 # CasaIMG Project
 
 Welcome to the CasaIMG project! This project aims to deliver CasaOS (https://github.com/IceWhaleTech/CasaOS) as a docker container.
